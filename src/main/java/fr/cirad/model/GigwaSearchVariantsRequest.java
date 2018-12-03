@@ -38,7 +38,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private String variantEffect = "";
     
     private String gtPattern = "Any";
-    private HashMap<String, Integer> annotationFieldThresholds = new HashMap();
+    private HashMap<String, Float> annotationFieldThresholds = new HashMap();
     private Float missingData = 100f;
     private Float minmaf = 0f;
     private Float maxmaf = 50f;
@@ -46,7 +46,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     
     private List<String> callSetIds2;
 	private String gtPattern2 = "Any";
-    private HashMap<String, Integer> annotationFieldThresholds2 = new HashMap();
+    private HashMap<String, Float> annotationFieldThresholds2 = new HashMap();
 	private Float missingData2 = 100f;
     private Float minmaf2 = 0f;
     private Float maxmaf2 = 50f;
@@ -115,11 +115,11 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.gtPattern = gtPattern;
     }
 
-    public HashMap<String, Integer> getAnnotationFieldThresholds() {
+    public HashMap<String, Float> getAnnotationFieldThresholds() {
 		return annotationFieldThresholds;
 	}
 
-	public void setAnnotationFieldThresholds(HashMap<String, Integer> annotationFieldThresholds) {
+	public void setAnnotationFieldThresholds(HashMap<String, Float> annotationFieldThresholds) {
 		this.annotationFieldThresholds = annotationFieldThresholds;
 	}
 
@@ -195,11 +195,11 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
 		this.gtPattern2 = gtPattern2;
 	}
 	
-	public HashMap<String, Integer> getAnnotationFieldThresholds2() {
+	public HashMap<String, Float> getAnnotationFieldThresholds2() {
 		return annotationFieldThresholds2;
 	}
 
-	public void setAnnotationFieldThresholds2(HashMap<String, Integer> annotationFieldThresholds2) {
+	public void setAnnotationFieldThresholds2(HashMap<String, Float> annotationFieldThresholds2) {
 		this.annotationFieldThresholds2 = annotationFieldThresholds2;
 	}
 
