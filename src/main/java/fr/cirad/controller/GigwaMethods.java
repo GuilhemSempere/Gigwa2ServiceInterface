@@ -99,9 +99,10 @@ public interface GigwaMethods {
      * get distinct allele counts
      *
      * @param sModule
+     * @param projId
      * @return TresSet<Integer> containing distinct alleles count
      */
-	public Collection<Integer> getDistinctAlleleCounts(String sModule);
+	public Collection<Integer> getDistinctAlleleCounts(String sModule, Integer projId);
 
     /**
      * get a Map with available project for a module
