@@ -144,10 +144,10 @@ public interface GigwaMethods {
      * build the list of query parameters
      *
      * @param GigwaSearchVariantsRequest
-     * @param externallySelectedSeqs
+//     * @param externallySelectedSeqs
      * @return ArrayList<Object> containing the query parameters
      */
-    public ArrayList<Object> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr, List<String> externallySelectedSeqs);
+    public ArrayList<Object> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr/*, List<String> externallySelectedSeqs*/);
 
     /**
      * Memory usage
@@ -184,15 +184,15 @@ public interface GigwaMethods {
      */
     public int getSequenceFilterCount(HttpServletRequest request, String sModule) throws IOException;
 
-    /**
-     * get sequence by id filtered with following parameters
-     *
-     * @param session
-     * @param sModule
-     * @return
-     * @throws FileNotFoundException
-     */
-    public ArrayList<String> getSequenceIDsBeingFilteredOn(HttpSession session, String sModule) throws FileNotFoundException;
+//    /**
+//     * get sequence by id filtered with following parameters
+//     *
+//     * @param session
+//     * @param sModule
+//     * @return
+//     * @throws FileNotFoundException
+//     */
+//    public ArrayList<String> getSequenceIDsBeingFilteredOn(HttpSession session, String sModule) throws FileNotFoundException;
 
     /**
      * clear the sequencefilter file
@@ -280,5 +280,5 @@ public interface GigwaMethods {
      */
     public TreeMap<String, HashMap<String, String>> getExportFormat(String module, int projId);
 
-	public TreeSet<String> searchableAnnotationFields(String sModule, int projId);
+	public TreeSet<String> getAnnotationFields(String sModule, int projId, boolean fOnlySearchableFields);
 }

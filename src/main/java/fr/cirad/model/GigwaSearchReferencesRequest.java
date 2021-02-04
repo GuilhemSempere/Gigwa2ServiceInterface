@@ -19,9 +19,8 @@ package fr.cirad.model;
 import org.ga4gh.methods.SearchReferencesRequest;
 
 /**
- *
- * @author petel extends SearchReferencesRequest to allow filter on
- * project/variantSet
+ * @author petel, sempere
+ * extends SearchReferencesRequest to allow filter on project/variantSet
  */
 public class GigwaSearchReferencesRequest extends SearchReferencesRequest {
 
