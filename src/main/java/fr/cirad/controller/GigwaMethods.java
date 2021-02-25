@@ -61,13 +61,13 @@ public interface GigwaMethods {
      * @return sorted List<String> containing htsjdk.variant.variantcontext.Type
      */
     public List<String> listVariantTypesSorted(String sModule, int projId);
-
-    /**
-     * get the list of available module on the server
-     *
-     * @return List<String>
-     */
-    public Collection<String> listModules();
+//
+//    /**
+//     * get the list of available module on the server
+//     *
+//     * @return List<String>
+//     */
+//    public Collection<String> listModules();
 
     /**
      * get the ploidy level of a genotypeProject
