@@ -273,12 +273,10 @@ public interface GigwaMethods {
     public Map<String, String> getAnnotationHeaders(String module, int projId);
     
     /**
-     * get available export format and description dor a module and projId
-     * @param module
-     * @param projId
+     * get available export formats and descriptions
      * @return 
      */
-    public TreeMap<String, HashMap<String, String>> getExportFormat(String module, int projId);
+    public TreeMap<String, HashMap<String, String>> getExportFormats();
 
 	public TreeSet<String> searchableAnnotationFields(String sModule, int projId);
 }
