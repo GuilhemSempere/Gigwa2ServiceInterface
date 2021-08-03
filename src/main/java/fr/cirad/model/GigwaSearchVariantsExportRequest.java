@@ -27,6 +27,7 @@ public class GigwaSearchVariantsExportRequest extends GigwaSearchVariantsRequest
     private String exportFormat;
     private boolean keepExportOnServer;
     private List<String> exportedIndividuals;
+    private List<String> metadataFields;
 
     public GigwaSearchVariantsExportRequest(){
         super();
@@ -54,5 +55,13 @@ public class GigwaSearchVariantsExportRequest extends GigwaSearchVariantsRequest
 
 	public void setExportedIndividuals(List<String> exportedIndividuals) {
 		this.exportedIndividuals = exportedIndividuals;
+	}
+
+	public List<String> getMetadataFields() {
+		return metadataFields;
+	}
+
+	public void setMetadataFields(List<String> metadataFields) {
+		this.metadataFields = metadataFields;
 	}
 }
