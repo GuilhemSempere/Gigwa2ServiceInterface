@@ -16,17 +16,14 @@
  *******************************************************************************/
 package fr.cirad.model;
 
-import java.util.Collection;
-
 /**
  *
  * @author petel, sempere
  */
-public class GigwaVcfFieldPlotRequest extends GigwaDensityRequest {
+public class GigwaVcfFieldPlotRequest extends GigwaIgvRequest {
 
     private String vcfField;
-    private Collection<String> plotIndividuals;
-
+    
     public GigwaVcfFieldPlotRequest(){
         super();
     }
@@ -38,13 +35,4 @@ public class GigwaVcfFieldPlotRequest extends GigwaDensityRequest {
 	public void setVcfField(String vcfField) {
 		this.vcfField = vcfField;
 	}
-
-	public Collection<String> getPlotIndividuals() {
-		return plotIndividuals;
-	}
-
-	public void setPlotIndividuals(Collection<String> plotIndividuals) {
-		this.plotIndividuals = plotIndividuals;
-	}
-    
 }

@@ -16,24 +16,25 @@
  *******************************************************************************/
 package fr.cirad.model;
 
-import org.ga4gh.methods.SearchVariantsResponse;
+import java.util.Collection;
 
 /**
  *
- * @author petel
+ * @author sempere
  */
-public class GigwaSearchVariantsResponse extends SearchVariantsResponse{
-    
-    private Long count;
+public class GigwaIgvRequest extends GigwaDensityRequest {
 
-    public GigwaSearchVariantsResponse() {
+    private Collection<String> plotIndividuals;
+
+    public GigwaIgvRequest(){
+        super();
     }
 
-    public Long getCount() {
-        return count;
-    }
+	public Collection<String> getPlotIndividuals() {
+		return plotIndividuals;
+	}
 
-    public void setCount(Long count) {
-        this.count = count;
-    }    
+	public void setPlotIndividuals(Collection<String> plotIndividuals) {
+		this.plotIndividuals = plotIndividuals;
+	}
 }
