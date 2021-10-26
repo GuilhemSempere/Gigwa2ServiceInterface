@@ -62,6 +62,8 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private int searchMode = 2;
     private boolean getGT = true;
     private boolean applyMatrixSizeLimit = true;
+    
+    private String selectedVariantIds = "";
 
 	public HttpServletRequest getRequest() {
         return request;
@@ -261,6 +263,16 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     public void setSortDir(String sortDir) {
         this.sortDir = sortDir;
     }
+
+    public String getSelectedVariantIds() {
+        return selectedVariantIds;
+    }
+
+    public void setSelectedVariantIds(String selectedVariantIds) {
+        this.selectedVariantIds = selectedVariantIds;
+    }
+    
+    
 
     /**
      * retrieve info from an ID
