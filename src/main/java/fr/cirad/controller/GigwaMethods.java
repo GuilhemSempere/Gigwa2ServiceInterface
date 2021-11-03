@@ -250,6 +250,7 @@ public interface GigwaMethods {
     public String getQueryKey(GigwaSearchVariantsRequest gsvr) throws IOException;
 
     public Map<Long, Long> selectionDensity(GigwaDensityRequest gsvdr) throws Exception;
+    public Map<Long, Double> selectionFst(GigwaDensityRequest gdr) throws Exception;
 
     public Map<Long, Integer> selectionVcfFieldPlotData(GigwaVcfFieldPlotRequest gsvdr) throws Exception;
 
