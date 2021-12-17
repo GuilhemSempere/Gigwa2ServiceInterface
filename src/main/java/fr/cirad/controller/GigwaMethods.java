@@ -147,7 +147,7 @@ public interface GigwaMethods {
      * @param externallySelectedSeqs
      * @return ArrayList<Object> containing the query parameters
      */
-    public ArrayList<Object> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr, List<String> externallySelectedSeqs);
+    public Collection<? extends List> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr, List<String> externallySelectedSeqs);
 
     /**
      * Memory usage

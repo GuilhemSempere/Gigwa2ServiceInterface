@@ -16,7 +16,9 @@
  *******************************************************************************/
 package fr.cirad.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -26,8 +28,11 @@ public class GigwaSearchVariantsExportRequest extends GigwaSearchVariantsRequest
 
     private String exportFormat;
     private boolean keepExportOnServer;
-    private List<String> exportedIndividuals;
-    private List<String> metadataFields;
+    
+    @NotNull
+    private List<String> exportedIndividuals = new ArrayList<>();
+    @NotNull
+    private List<String> metadataFields = new ArrayList<>();
 
     public GigwaSearchVariantsExportRequest(){
         super();
