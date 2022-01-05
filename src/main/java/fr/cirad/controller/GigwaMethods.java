@@ -145,9 +145,10 @@ public interface GigwaMethods {
      *
      * @param GigwaSearchVariantsRequest
      * @param externallySelectedSeqs
+     * @param fForBrowsing : when filtering on variant IDs, if fForBrowsing is true then returned queries will not include the $match on _id
      * @return ArrayList<Object> containing the query parameters
      */
-    public Collection<? extends List> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr, List<String> externallySelectedSeqs);
+    public Collection<? extends List> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr, List<String> externallySelectedSeqs, boolean fForBrowsing);
 
     /**
      * Memory usage
