@@ -41,7 +41,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private String variantEffect = "";
     
     private String gtPattern = "Any";
-    private HashMap<String, Float> annotationFieldThresholds = new HashMap();
+    private HashMap<String, Float> annotationFieldThresholds = new HashMap<>();
     private Float missingData = 100f;
     private Float minmaf = 0f;
     private Float maxmaf = 50f;
@@ -49,7 +49,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     
     private List<String> callSetIds2;
     private String gtPattern2 = "Any";
-    private HashMap<String, Float> annotationFieldThresholds2 = new HashMap();
+    private HashMap<String, Float> annotationFieldThresholds2 = new HashMap<>();
     private Float missingData2 = 100f;
     private Float minmaf2 = 0f;
     private Float maxmaf2 = 50f;
