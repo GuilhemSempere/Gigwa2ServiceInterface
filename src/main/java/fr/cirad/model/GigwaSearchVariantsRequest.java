@@ -41,16 +41,16 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private String variantEffect = "";
     
     private String gtPattern = "Any";
-    private HashMap<String, Float> annotationFieldThresholds = new HashMap<String, Float>();
+    private HashMap<String, Float> annotationFieldThresholds = new HashMap<>();
     private Float missingData = 100f;
     private Float minmaf = 0f;
     private Float maxmaf = 50f;
     private Integer mostSameRatio = 100;
     
     private List<String> callSetIds2;
-	private String gtPattern2 = "Any";
-    private HashMap<String, Float> annotationFieldThresholds2 = new HashMap<String, Float>();
-	private Float missingData2 = 100f;
+    private String gtPattern2 = "Any";
+    private HashMap<String, Float> annotationFieldThresholds2 = new HashMap<>();
+    private Float missingData2 = 100f;
     private Float minmaf2 = 0f;
     private Float maxmaf2 = 50f;
     private Integer mostSameRatio2 = 100;
@@ -62,8 +62,10 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private int searchMode = 2;
     private boolean getGT = true;
     private boolean applyMatrixSizeLimit = true;
+    
+    private String selectedVariantIds = "";
 
-	public HttpServletRequest getRequest() {
+    public HttpServletRequest getRequest() {
         return request;
     }
 
@@ -72,12 +74,12 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
     
     public boolean shallApplyMatrixSizeLimit() {
-		return applyMatrixSizeLimit;
-	}
+        return applyMatrixSizeLimit;
+    }
 
-	public void setApplyMatrixSizeLimit(boolean applyMatrixSizeLimit) {
-		this.applyMatrixSizeLimit = applyMatrixSizeLimit;
-	}
+    public void setApplyMatrixSizeLimit(boolean applyMatrixSizeLimit) {
+            this.applyMatrixSizeLimit = applyMatrixSizeLimit;
+    }
 
     public int getSearchMode() {
         return searchMode;
@@ -119,14 +121,14 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public HashMap<String, Float> getAnnotationFieldThresholds() {
-		return annotationFieldThresholds;
-	}
+	return annotationFieldThresholds;
+    }
 
-	public void setAnnotationFieldThresholds(HashMap<String, Float> annotationFieldThresholds) {
-		this.annotationFieldThresholds = annotationFieldThresholds;
-	}
+    public void setAnnotationFieldThresholds(HashMap<String, Float> annotationFieldThresholds) {
+        this.annotationFieldThresholds = annotationFieldThresholds;
+    }
 
-	public Float getMissingData() {
+    public Float getMissingData() {
         return missingData;
     }
 
@@ -175,78 +177,78 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
     
     public Integer getMostSameRatio() {
-		return mostSameRatio;
-	}
+        return mostSameRatio;
+    }
 
-	public void setMostSameRatio(Integer mostSameRatio) {
-		this.mostSameRatio = mostSameRatio;
-	}
+    public void setMostSameRatio(Integer mostSameRatio) {
+        this.mostSameRatio = mostSameRatio;
+    }
 
-	public List<String> getCallSetIds2() {
-		return callSetIds2;
-	}
+    public List<String> getCallSetIds2() {
+        return callSetIds2;
+    }
 
-	public void setCallSetIds2(List<String> callSetIds2) {
-		this.callSetIds2 = callSetIds2;
-	}
+    public void setCallSetIds2(List<String> callSetIds2) {
+        this.callSetIds2 = callSetIds2;
+    }
 
-	public String getGtPattern2() {
-		return gtPattern2;
-	}
+    public String getGtPattern2() {
+        return gtPattern2;
+    }
 
-	public void setGtPattern2(String gtPattern2) {
-		this.gtPattern2 = gtPattern2;
-	}
-	
-	public HashMap<String, Float> getAnnotationFieldThresholds2() {
-		return annotationFieldThresholds2;
-	}
+    public void setGtPattern2(String gtPattern2) {
+        this.gtPattern2 = gtPattern2;
+    }
 
-	public void setAnnotationFieldThresholds2(HashMap<String, Float> annotationFieldThresholds2) {
-		this.annotationFieldThresholds2 = annotationFieldThresholds2;
-	}
+    public HashMap<String, Float> getAnnotationFieldThresholds2() {
+        return annotationFieldThresholds2;
+    }
 
-	public Float getMissingData2() {
-		return missingData2;
-	}
+    public void setAnnotationFieldThresholds2(HashMap<String, Float> annotationFieldThresholds2) {
+        this.annotationFieldThresholds2 = annotationFieldThresholds2;
+    }
 
-	public void setMissingData2(Float missingData2) {
-		this.missingData2 = missingData2;
-	}
+    public Float getMissingData2() {
+        return missingData2;
+    }
 
-	public Float getMinmaf2() {
-		return minmaf2;
-	}
+    public void setMissingData2(Float missingData2) {
+        this.missingData2 = missingData2;
+    }
 
-	public void setMinmaf2(Float minmaf2) {
-		this.minmaf2 = minmaf2;
-	}
+    public Float getMinmaf2() {
+        return minmaf2;
+    }
 
-	public Float getMaxmaf2() {
-		return maxmaf2;
-	}
+    public void setMinmaf2(Float minmaf2) {
+        this.minmaf2 = minmaf2;
+    }
 
-	public void setMaxmaf2(Float maxmaf2) {
-		this.maxmaf2 = maxmaf2;
-	}
+    public Float getMaxmaf2() {
+        return maxmaf2;
+    }
 
-	public Integer getMostSameRatio2() {
-		return mostSameRatio2;
-	}
+    public void setMaxmaf2(Float maxmaf2) {
+        this.maxmaf2 = maxmaf2;
+    }
 
-	public void setMostSameRatio2(Integer mostSameRatio2) {
-		this.mostSameRatio2 = mostSameRatio2;
-	}
+    public Integer getMostSameRatio2() {
+        return mostSameRatio2;
+    }
+
+    public void setMostSameRatio2(Integer mostSameRatio2) {
+        this.mostSameRatio2 = mostSameRatio2;
+    }
 	
     public boolean isDiscriminate() {
-		return discriminate;
-	}
+        return discriminate;
+    }
 
-	public void setDiscriminate(boolean discriminate) {
-		this.discriminate = discriminate;
-	}
+    public void setDiscriminate(boolean discriminate) {
+        this.discriminate = discriminate;
+    }
 
-	public String getSortBy() {
+    public String getSortBy() {
         return sortBy;
     }
 
@@ -261,6 +263,16 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     public void setSortDir(String sortDir) {
         this.sortDir = sortDir;
     }
+
+    public String getSelectedVariantIds() {
+        return selectedVariantIds;
+    }
+
+    public void setSelectedVariantIds(String selectedVariantIds) {
+        this.selectedVariantIds = selectedVariantIds;
+    }
+    
+    
 
     /**
      * retrieve info from an ID
