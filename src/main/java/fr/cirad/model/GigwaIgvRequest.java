@@ -16,7 +16,7 @@
  *******************************************************************************/
 package fr.cirad.model;
 
-import java.util.Collection;
+//import java.util.Collection;
 
 /**
  *
@@ -24,17 +24,17 @@ import java.util.Collection;
  */
 public class GigwaIgvRequest extends GigwaDensityRequest {
 
-    private Collection<String> plotIndividuals;
+//    private Collection<String> plotIndividuals;
 
     public GigwaIgvRequest(){
         super();
     }
 
-	public Collection<String> getPlotIndividuals() {
-		return plotIndividuals;
-	}
-
-	public void setPlotIndividuals(Collection<String> plotIndividuals) {
-		this.plotIndividuals = plotIndividuals;
-	}
+//	public Collection<String> getPlotIndividuals() {
+//		return plotIndividuals;
+//	}
+//
+//	public void setPlotIndividuals(Collection<String> plotIndividuals) {
+//		this.plotIndividuals = plotIndividuals;
+//	}
 }
