@@ -16,6 +16,7 @@
  *******************************************************************************/
 package fr.cirad.model;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class GigwaDensityRequest extends GigwaSearchVariantsRequest {
     private Integer displayedRangeIntervalCount;
     private String displayedVariantType;
     private List<List<String>> displayedAdditionalGroups;
-    private List<String> plotIndividuals;
+    private Collection<String> plotIndividuals;
 
 	public GigwaDensityRequest(){
         super();
@@ -84,11 +85,11 @@ public class GigwaDensityRequest extends GigwaSearchVariantsRequest {
 		this.displayedAdditionalGroups = displayedAdditionalGroups;
 	}
 	
-	public List<String> getPlotIndividuals() {
+	public Collection<String> getPlotIndividuals() {
 		return this.plotIndividuals;
 	}
 	
-	public void setPlotIndividuals(List<String> plotIndividuals) {
+	public void setPlotIndividuals(Collection<String> plotIndividuals) {
 		this.plotIndividuals = plotIndividuals;
 	}
 }
