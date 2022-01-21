@@ -30,6 +30,7 @@ public class GigwaDensityRequest extends GigwaSearchVariantsRequest {
     private Integer displayedRangeIntervalCount;
     private String displayedVariantType;
     private List<List<String>> displayedAdditionalGroups;
+    private List<String> plotIndividuals;
 
 	public GigwaDensityRequest(){
         super();
@@ -81,5 +82,13 @@ public class GigwaDensityRequest extends GigwaSearchVariantsRequest {
 
 	public void setDisplayedAdditionalGroups(List<List<String>> displayedAdditionalGroups) {
 		this.displayedAdditionalGroups = displayedAdditionalGroups;
+	}
+	
+	public List<String> getPlotIndividuals() {
+		return this.plotIndividuals;
+	}
+	
+	public void setPlotIndividuals(List<String> plotIndividuals) {
+		this.plotIndividuals = plotIndividuals;
 	}
 }
