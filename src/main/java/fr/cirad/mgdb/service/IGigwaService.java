@@ -14,7 +14,7 @@
  * See <http://www.gnu.org/licenses/agpl.html> for details about GNU General
  * Public License V3.
  *******************************************************************************/
-package fr.cirad.controller;
+package fr.cirad.mgdb.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -40,7 +40,7 @@ import fr.cirad.model.GigwaVcfFieldPlotRequest;
  *
  * @author adrien petel, guilhem sempere
  */
-public interface GigwaMethods {
+public interface IGigwaService {
 
     static public final String ID_SEPARATOR = "§";
     
@@ -250,11 +250,11 @@ public interface GigwaMethods {
 
     public String getQueryKey(GigwaSearchVariantsRequest gsvr) throws IOException;
 
-    public Map<Long, Long> selectionDensity(GigwaDensityRequest gsvdr) throws Exception;
-    public Map<Long, Double> selectionFst(GigwaDensityRequest gdr) throws Exception;
-    public List<Map<Long, Double>> selectionTajimaD(GigwaDensityRequest gdr) throws Exception;
-
-    public Map<Long, Integer> selectionVcfFieldPlotData(GigwaVcfFieldPlotRequest gsvdr) throws Exception;
+//    public Map<Long, Long> selectionDensity(GigwaDensityRequest gsvdr) throws Exception;
+//    public Map<Long, Double> selectionFst(GigwaDensityRequest gdr) throws Exception;
+//    public List<Map<Long, Double>> selectionTajimaD(GigwaDensityRequest gdr) throws Exception;
+//
+//    public Map<Long, Integer> selectionVcfFieldPlotData(GigwaVcfFieldPlotRequest gsvdr) throws Exception;
 
 //    /**
 //     * get sequences bases from a FASTA file

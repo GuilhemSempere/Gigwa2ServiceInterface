@@ -16,8 +16,6 @@
  *******************************************************************************/
 package fr.cirad.model;
 
-import fr.cirad.controller.GigwaMethods;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,6 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.ga4gh.methods.SearchVariantsRequest;
+
+import fr.cirad.mgdb.service.IGigwaService;
 
 /**
  * ga4gh SearchVariantsRequest extended with extra option for filtering
@@ -284,7 +284,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
      */
     public static String[] getInfoFromId(String id, int expectedParamCount) {
 
-        String delimitor = GigwaMethods.ID_SEPARATOR;
+        String delimitor = IGigwaService.ID_SEPARATOR;
         String[] result = id.split(delimitor);
         if (result.length == expectedParamCount) {
             return result;
