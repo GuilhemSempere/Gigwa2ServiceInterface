@@ -21,9 +21,9 @@ import java.util.List;
 
 /**
  *
- * @author petel
+ * @author petel, sempere, mignerot
  */
-public class GigwaDensityRequest extends GigwaSearchVariantsRequest {
+public class GigwaChartRequest extends GigwaSearchVariantsRequest {
 
     private String displayedSequence;
     private Long displayedRangeMin;
@@ -32,8 +32,9 @@ public class GigwaDensityRequest extends GigwaSearchVariantsRequest {
     private String displayedVariantType;
     private List<List<String>> displayedAdditionalGroups;
     private Collection<String> plotIndividuals;
+    private boolean fTreatFirstGroupIndividualsAsSingletons = false;	// if true, first group will be split to consider each individual it contains as a separate group
 
-	public GigwaDensityRequest(){
+	public GigwaChartRequest(){
         super();
     }
     
@@ -91,5 +92,13 @@ public class GigwaDensityRequest extends GigwaSearchVariantsRequest {
 	
 	public void setPlotIndividuals(Collection<String> plotIndividuals) {
 		this.plotIndividuals = plotIndividuals;
+	}
+	
+	public boolean treatFirstGroupIndividualsAsSingletons() {
+		return fTreatFirstGroupIndividualsAsSingletons;
+	}
+
+	public void setfTreatFirstGroupIndividualsAsSingletons(boolean fTreatFirstGroupIndividualsAsSingletons) {
+		this.fTreatFirstGroupIndividualsAsSingletons = fTreatFirstGroupIndividualsAsSingletons;
 	}
 }

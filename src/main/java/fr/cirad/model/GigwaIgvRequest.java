@@ -22,7 +22,7 @@ package fr.cirad.model;
  *
  * @author sempere
  */
-public class GigwaIgvRequest extends GigwaDensityRequest {
+public class GigwaIgvRequest extends GigwaChartRequest {
 
 //    private Collection<String> plotIndividuals;
 
