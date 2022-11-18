@@ -32,7 +32,7 @@ public class GigwaChartRequest extends GigwaSearchVariantsRequest {
     private String displayedVariantType;
     private List<List<String>> displayedAdditionalGroups;
     private Collection<String> plotIndividuals;
-    private boolean fTreatFirstGroupIndividualsAsSingletons = false;	// if true, first group will be split to consider each individual it contains as a separate group
+    private boolean treatFirstGroupIndividualsAsSingletons = false;	// if true, first group will be split to consider each individual it contains as a separate group
 
 	public GigwaChartRequest(){
         super();
@@ -95,10 +95,10 @@ public class GigwaChartRequest extends GigwaSearchVariantsRequest {
 	}
 	
 	public boolean treatFirstGroupIndividualsAsSingletons() {
-		return fTreatFirstGroupIndividualsAsSingletons;
+		return treatFirstGroupIndividualsAsSingletons;
 	}
 
-	public void setfTreatFirstGroupIndividualsAsSingletons(boolean fTreatFirstGroupIndividualsAsSingletons) {
-		this.fTreatFirstGroupIndividualsAsSingletons = fTreatFirstGroupIndividualsAsSingletons;
+	public void setTreatFirstGroupIndividualsAsSingletons(boolean fTreatFirstGroupIndividualsAsSingletons) {
+		this.treatFirstGroupIndividualsAsSingletons = fTreatFirstGroupIndividualsAsSingletons;
 	}
 }
