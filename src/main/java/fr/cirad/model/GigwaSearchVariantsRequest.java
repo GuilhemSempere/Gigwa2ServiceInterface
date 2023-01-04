@@ -42,17 +42,19 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     
     private String gtPattern = "Any";
     private HashMap<String, Float> annotationFieldThresholds = new HashMap<>();
-    private Float missingData = 100f;
-    private Float minmaf = 0f;
-    private Float maxmaf = 50f;
+    private Float minMissingData = 0f;
+    private Float maxMissingData = 100f;
+    private Float minMaf = 0f;
+    private Float maxMaf = 50f;
     private Integer mostSameRatio = 100;
     
     private List<String> callSetIds2;
     private String gtPattern2 = "Any";
     private HashMap<String, Float> annotationFieldThresholds2 = new HashMap<>();
-    private Float missingData2 = 100f;
-    private Float minmaf2 = 0f;
-    private Float maxmaf2 = 50f;
+    private Float minMissingData2 = 0f;
+    private Float maxMissingData2 = 100f;
+    private Float minMaf2 = 0f;
+    private Float maxMaf2 = 50f;
     private Integer mostSameRatio2 = 100;
     
     private boolean discriminate = false;
@@ -128,28 +130,36 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.annotationFieldThresholds = annotationFieldThresholds;
     }
 
-    public Float getMissingData() {
-        return missingData;
+    public Float getMinMissingData() {
+        return minMissingData;
     }
 
-    public void setMissingData(Float missingData) {
-        this.missingData = missingData;
+    public void setMinMissingData(Float minMissingData) {
+        this.minMissingData = minMissingData;
     }
 
-    public Float getMinmaf() {
-        return minmaf;
+    public Float getMaxMissingData() {
+        return maxMissingData;
     }
 
-    public void setMinmaf(Float minmaf) {
-        this.minmaf = minmaf;
+    public void setMaxMissingData(Float maxMissingData) {
+        this.maxMissingData = maxMissingData;
     }
 
-    public Float getMaxmaf() {
-        return maxmaf;
+    public Float getMinMaf() {
+        return minMaf;
     }
 
-    public void setMaxmaf(Float maxmaf) {
-        this.maxmaf = maxmaf;
+    public void setMinMaf(Float minMaf) {
+        this.minMaf = minMaf;
+    }
+
+    public Float getMaxMaf() {
+        return maxMaf;
+    }
+
+    public void setMaxMaf(Float maxMaf) {
+        this.maxMaf = maxMaf;
     }
 
     public String getAlleleCount() {
@@ -208,28 +218,36 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.annotationFieldThresholds2 = annotationFieldThresholds2;
     }
 
-    public Float getMissingData2() {
-        return missingData2;
+    public Float getMinMissingData2() {
+        return minMissingData2;
     }
 
-    public void setMissingData2(Float missingData2) {
-        this.missingData2 = missingData2;
+    public void setMinMissingData2(Float minMissingData2) {
+        this.minMissingData2 = minMissingData2;
     }
 
-    public Float getMinmaf2() {
-        return minmaf2;
+    public Float getMaxMissingData2() {
+        return maxMissingData2;
     }
 
-    public void setMinmaf2(Float minmaf2) {
-        this.minmaf2 = minmaf2;
+    public void setMaxMissingData2(Float maxMissingData2) {
+        this.maxMissingData2 = maxMissingData2;
     }
 
-    public Float getMaxmaf2() {
-        return maxmaf2;
+    public Float getMinMaf2() {
+        return minMaf2;
     }
 
-    public void setMaxmaf2(Float maxmaf2) {
-        this.maxmaf2 = maxmaf2;
+    public void setMinMaf2(Float minMaf2) {
+        this.minMaf2 = minMaf2;
+    }
+
+    public Float getMaxMaf2() {
+        return maxMaf2;
+    }
+
+    public void setMaxMaf2(Float maxMaf2) {
+        this.maxMaf2 = maxMaf2;
     }
 
     public Integer getMostSameRatio2() {
