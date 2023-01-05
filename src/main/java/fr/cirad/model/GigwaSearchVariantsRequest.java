@@ -44,6 +44,8 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private HashMap<String, Float> annotationFieldThresholds = new HashMap<>();
     private Float minMissingData = 0f;
     private Float maxMissingData = 100f;
+    private Float minHeZ = 0f;
+    private Float maxHeZ = 100f;
     private Float minMaf = 0f;
     private Float maxMaf = 50f;
     private Integer mostSameRatio = 100;
@@ -53,6 +55,8 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private HashMap<String, Float> annotationFieldThresholds2 = new HashMap<>();
     private Float minMissingData2 = 0f;
     private Float maxMissingData2 = 100f;
+    private Float minHeZ2 = 0f;
+    private Float maxHeZ2 = 100f;
     private Float minMaf2 = 0f;
     private Float maxMaf2 = 50f;
     private Integer mostSameRatio2 = 100;
@@ -146,6 +150,22 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.maxMissingData = maxMissingData;
     }
 
+    public Float getMinHeZ() {
+        return minHeZ;
+    }
+
+    public void setMinHeZ(Float minHeZ) {
+        this.minHeZ = minHeZ;
+    }
+
+    public Float getMaxHeZ() {
+        return maxHeZ;
+    }
+
+    public void setMaxHeZ(Float maxHeZ) {
+        this.maxHeZ = maxHeZ;
+    }
+
     public Float getMinMaf() {
         return minMaf;
     }
@@ -232,6 +252,22 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
 
     public void setMaxMissingData2(Float maxMissingData2) {
         this.maxMissingData2 = maxMissingData2;
+    }
+    
+    public Float getMinHeZ2() {
+        return minHeZ2;
+    }
+
+    public void setMinHeZ2(Float minHeZ2) {
+        this.minHeZ2 = minHeZ2;
+    }
+
+    public Float getMaxHeZ2() {
+        return maxHeZ2;
+    }
+
+    public void setMaxHeZ2(Float maxHeZ2) {
+        this.maxHeZ2 = maxHeZ2;
     }
 
     public Float getMinMaf2() {
