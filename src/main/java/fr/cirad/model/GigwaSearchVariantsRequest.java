@@ -339,7 +339,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     public static String[] getInfoFromId(String id, int expectedParamCount) {
 
         String delimitor = IGigwaService.ID_SEPARATOR;
-        String[] result = id.split(delimitor);
+        String[] result = id.split(delimitor, -1);
         if (result.length == expectedParamCount) {
             return result;
         } else {

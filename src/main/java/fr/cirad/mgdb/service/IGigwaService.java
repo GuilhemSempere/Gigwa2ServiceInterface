@@ -224,7 +224,7 @@ public interface IGigwaService {
      * @param sModule
      * @param processID
      */
-    public void onInterfaceUnload(String sModule, String processID);
+    public void dropTempColl(String sModule, String processID);
 
     /**
      * get the distinct sequences in selection
