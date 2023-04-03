@@ -325,25 +325,4 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     public void setSelectedVariantIds(String selectedVariantIds) {
         this.selectedVariantIds = selectedVariantIds;
     }
-    
-    
-
-    /**
-     * retrieve info from an ID
-     *
-     * @param id of the GA4GH object to parse
-     * @param expectedParamCount number of params that should be found
-     * @return string[] containing Module, Project, VariantSetName | CallSetName
-     * , VariantName Or null if the module doesn't exist
-     */
-    public static String[] getInfoFromId(String id, int expectedParamCount) {
-
-        String delimitor = IGigwaService.ID_SEPARATOR;
-        String[] result = id.split(delimitor, -1);
-        if (result.length == expectedParamCount) {
-            return result;
-        } else {
-            return null;
-        }
-    }
 }
