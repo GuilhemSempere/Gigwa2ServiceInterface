@@ -41,8 +41,6 @@ import fr.cirad.model.GigwaVcfFieldPlotRequest;
  * @author adrien petel, guilhem sempere
  */
 public interface IGigwaService {
-
-    static public final String ID_SEPARATOR = "§";
     
     /**
      * get list of variant avaible for a specific module and projId
@@ -224,7 +222,7 @@ public interface IGigwaService {
      * @param sModule
      * @param processID
      */
-    public void onInterfaceUnload(String sModule, String processID);
+    public void dropTempColl(String sModule, String processID);
 
     /**
      * get the distinct sequences in selection
