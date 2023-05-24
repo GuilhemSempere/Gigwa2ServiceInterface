@@ -43,13 +43,13 @@ import fr.cirad.model.GigwaVcfFieldPlotRequest;
 public interface IGigwaService {
     
     /**
-     * get list of variant avaible for a specific module and projId
+     * get list of variant avaible for a given module (and optionally, project ID)
      *
      * @param sModule
-     * @param projId
-     * @return List<String> containing htsjdk.variant.variantcontext.Type
+     * @param projId, optional (otherwise, all projects are accounted for)
+     * @return Collection<String> containing htsjdk.variant.variantcontext.Type
      */
-    public LinkedHashSet<String> getProjectVariantTypes(String sModule, int projId);
+    public Collection<String> getProjectVariantTypes(String sModule, Integer projId);
 
     /**
      * sort a list of variant Tpes
