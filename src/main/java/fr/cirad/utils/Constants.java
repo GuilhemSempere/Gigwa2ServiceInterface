@@ -44,6 +44,8 @@ public class Constants {
     public static final String VERSION = "version";
 
     public static final String HOSTS = "host";
+    
+    public static final String GENOTYPING_TECHNOLOGY = "genotyping technology";
 
     public static final String ANN_HEADER = "ann_header";
     public static final String ANN_VALUE_LIST_PREFIX = "ann_values_";
