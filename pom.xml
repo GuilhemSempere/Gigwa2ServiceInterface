@@ -6,6 +6,14 @@
     <version>2.6.1-RELEASE</version>
     <packaging>jar</packaging>
     
+    <parent>
+        <groupId>fr.cirad</groupId>
+        <artifactId>gigwa-bom</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../gigwa-bom/pom.xml</relativePath>
+    </parent>
+
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -16,24 +24,19 @@
         <dependency>
             <groupId>com.twitter</groupId>
             <artifactId>hpack</artifactId>
-            <version>0.11.0</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>8.0</version>
-            <scope>provided</scope>
         </dependency>
      
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
         </dependency>
         <dependency>
             <groupId>org.skyscreamer</groupId>
             <artifactId>jsonassert</artifactId>
-            <version>1.5.0</version>
         </dependency>        
                 
         <dependency>
@@ -76,21 +79,19 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.4.1</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.13.4</version>
         </dependency>
     </dependencies>
     
-    <repositories>
+<!--    <repositories>
 	  <repository>
 	    <id>geomajas</id>
 	    <url>http://maven.geomajas.org/</url>
 	  </repository>
-    </repositories>
+    </repositories>-->
 
 <!--    <build>
         <plugins>
