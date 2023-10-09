@@ -141,12 +141,13 @@ public interface IGigwaService {
     /**
      * build the list of query parameters
      *
-     * @param GigwaSearchVariantsRequest
+     * @param gsvr
      * @param externallySelectedSeqs
+     * @param entityClass
      * @param fForBrowsing : when filtering on variant IDs, if fForBrowsing is true then returned queries will not include the $match on _id
      * @return ArrayList<Object> containing the query parameters
      */
-    public Collection<? extends List> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr, List<String> externallySelectedSeqs, boolean fForBrowsing);
+    public Collection<? extends List> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr, List<String> externallySelectedSeqs, boolean fForBrowsing, Class<?> entityClass);
 
     /**
      * Memory usage
