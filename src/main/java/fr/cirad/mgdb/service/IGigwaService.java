@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -30,10 +29,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fr.cirad.model.GigwaDensityRequest;
 import fr.cirad.model.GigwaSearchVariantsExportRequest;
 import fr.cirad.model.GigwaSearchVariantsRequest;
-import fr.cirad.model.GigwaVcfFieldPlotRequest;
 
 /**
  * Interface defining gigwa-specific methods (i.e. excluding GA4GH methods)
@@ -41,15 +38,6 @@ import fr.cirad.model.GigwaVcfFieldPlotRequest;
  * @author adrien petel, guilhem sempere
  */
 public interface IGigwaService {
-    
-    /**
-     * get list of variant avaible for a given module (and optionally, project ID)
-     *
-     * @param sModule
-     * @param projId, optional (otherwise, all projects are accounted for)
-     * @return Collection<String> containing htsjdk.variant.variantcontext.Type
-     */
-    public Collection<String> getProjectVariantTypes(String sModule, Integer projId);
 
     /**
      * sort a list of variant Tpes
@@ -84,14 +72,6 @@ public interface IGigwaService {
      * @return TreeSet<String> containing annotations effects
      */
     public TreeSet<String> getProjectEffectAnnotations(String sModule, int projId);
-
-    /**
-     *
-     * @param sModule
-     * @param projId
-     * @return
-     */
-    public List<String> getProjectSequences(String sModule, int projId);
 
     /**
      * get distinct allele counts
@@ -137,17 +117,6 @@ public interface IGigwaService {
      * @throws FileNotFoundException
      */
     public List<String> listSequences(HttpServletRequest request, String sModule, int projId) throws FileNotFoundException;
-
-    /**
-     * build the list of query parameters
-     *
-     * @param gsvr
-     * @param externallySelectedSeqs
-     * @param entityClass
-     * @param fForBrowsing : when filtering on variant IDs, if fForBrowsing is true then returned queries will not include the $match on _id
-     * @return ArrayList<Object> containing the query parameters
-     */
-    public Collection<? extends List> buildVariantDataQuery(GigwaSearchVariantsRequest gsvr, List<String> externallySelectedSeqs, boolean fForBrowsing, Class<?> entityClass);
 
     /**
      * Memory usage
