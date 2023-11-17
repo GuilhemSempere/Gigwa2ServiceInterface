@@ -168,7 +168,7 @@ public interface IGigwaService {
     /**
      * export the list of variants in a .zip file
      *
-     * @param request
+     * @param gsvr
      * @param token
      * @param response
      * @throws Exception 
