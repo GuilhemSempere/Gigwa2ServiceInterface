@@ -26,11 +26,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.ga4gh.methods.SearchVariantsRequest;
 
-import fr.cirad.mgdb.service.IGigwaService;
-
 /**
  * ga4gh SearchVariantsRequest extended with extra option for filtering
- * @author petel
+ * @author petel, sempere, biggio
  */
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
@@ -45,7 +43,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private Integer numberGroups = 2;
     
     private List<String> gtPattern = new ArrayList<>(Collections.nCopies(numberGroups, "Any"));
-    private List<HashMap<String, Float>> annotationFieldThresholds;
+    private List<HashMap<String, Float>> annotationFieldThresholds = new ArrayList<>(Collections.nCopies(numberGroups, new HashMap<>()));
     private List<Float> minMissingData = new ArrayList<>(Collections.nCopies(numberGroups, 0f));
     private List<Float> maxMissingData = new ArrayList<>(Collections.nCopies(numberGroups, 100f));
     private List<Float> minHeZ = new ArrayList<>(Collections.nCopies(numberGroups, 0f));
@@ -55,15 +53,6 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private List<Integer> mostSameRatio = new ArrayList<>(Collections.nCopies(numberGroups, 100));
     
     private List<List<String>> additionalCallSetIds;
-//    private String gtPattern2 = "Any";
-//    private HashMap<String, Float> annotationFieldThresholds2 = new HashMap<>();
-//    private Float minMissingData2 = 0f;
-//    private Float maxMissingData2 = 100f;
-//    private Float minHeZ2 = 0f;
-//    private Float maxHeZ2 = 100f;
-//    private Float minMaf2 = 0f;
-//    private Float maxMaf2 = 50f;
-//    private Integer mostSameRatio2 = 100;
     
     private boolean discriminate = false;
     private String sortBy = "";
@@ -74,6 +63,13 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private boolean applyMatrixSizeLimit = true;
     
     private String selectedVariantIds = "";
+    
+    public GigwaSearchVariantsRequest() {
+        super.setPageSize(100);
+        super.setPageToken("0");
+        super.setStart(-1L);
+        super.setEnd(-1L);
+    }
 
     public HttpServletRequest getRequest() {
         return request;
@@ -97,13 +93,6 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
 
     public void setSearchMode(int searchMode) {
         this.searchMode = searchMode;
-    }
-
-    public GigwaSearchVariantsRequest() {
-        super.setPageSize(100);
-        super.setPageToken("0");
-        super.setStart(0l);
-        super.setEnd(Long.MAX_VALUE);
     }
 
     public String getSelectedVariantTypes() {
@@ -270,83 +259,15 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.additionalCallSetIds = additionalCallSetIds;
     }
 
+    public List<List<String>> getAllCallSetIds() {
+        return new ArrayList<>(additionalCallSetIds) {{ add(0, getCallSetIds()); }};
+    }
+
     public void setAdditionalCallSetIdsWithIndex(List<String> additionalCallSetIds, Integer index) {
         if (index >= 0 && index < this.additionalCallSetIds.size())
             this.additionalCallSetIds.set(index, additionalCallSetIds);
     }
 
-    /*public String getGtPattern2() {
-        return gtPattern2;
-    }
-
-    public void setGtPattern2(String gtPattern2) {
-        this.gtPattern2 = gtPattern2;
-    }
-
-//    public HashMap<String, Float> getAnnotationFieldThresholds2() {
-//        return annotationFieldThresholds2;
-//    }
-//
-//    public void setAnnotationFieldThresholds2(HashMap<String, Float> annotationFieldThresholds2) {
-//        this.annotationFieldThresholds2 = annotationFieldThresholds2;
-//    }
-
-    public Float getMinMissingData2() {
-        return minMissingData2;
-    }
-
-    public void setMinMissingData2(Float minMissingData2) {
-        this.minMissingData2 = minMissingData2;
-    }
-
-    public Float getMaxMissingData2() {
-        return maxMissingData2;
-    }
-
-    public void setMaxMissingData2(Float maxMissingData2) {
-        this.maxMissingData2 = maxMissingData2;
-    }
-    
-    public Float getMinHeZ2() {
-        return minHeZ2;
-    }
-
-    public void setMinHeZ2(Float minHeZ2) {
-        this.minHeZ2 = minHeZ2;
-    }
-
-    public Float getMaxHeZ2() {
-        return maxHeZ2;
-    }
-
-    public void setMaxHeZ2(Float maxHeZ2) {
-        this.maxHeZ2 = maxHeZ2;
-    }
-
-    public Float getMinMaf2() {
-        return minMaf2;
-    }
-
-    public void setMinMaf2(Float minMaf2) {
-        this.minMaf2 = minMaf2;
-    }
-
-    public Float getMaxMaf2() {
-        return maxMaf2;
-    }
-
-    public void setMaxMaf2(Float maxMaf2) {
-        this.maxMaf2 = maxMaf2;
-    }
-
-    public Integer getMostSameRatio2() {
-        return mostSameRatio2;
-    }
-
-    public void setMostSameRatio2(Integer mostSameRatio2) {
-        this.mostSameRatio2 = mostSameRatio2;
-    }*/
-	
     public boolean isDiscriminate() {
         return discriminate;
     }
