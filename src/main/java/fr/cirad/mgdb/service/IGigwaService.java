@@ -137,7 +137,7 @@ public interface IGigwaService {
     /**
      * export the list of variants in a .zip file
      *
-     * @param request
+     * @param gsvr
      * @param token
      * @param response
      * @throws Exception 
@@ -218,23 +218,6 @@ public interface IGigwaService {
 
     public String getQueryKey(GigwaSearchVariantsRequest gsvr) throws IOException;
 
-//    public Map<Long, Long> selectionDensity(GigwaDensityRequest gsvdr) throws Exception;
-//    public Map<Long, Double> selectionFst(GigwaDensityRequest gdr) throws Exception;
-//    public List<Map<Long, Double>> selectionTajimaD(GigwaDensityRequest gdr) throws Exception;
-//
-//    public Map<Long, Integer> selectionVcfFieldPlotData(GigwaVcfFieldPlotRequest gsvdr) throws Exception;
-
-//    /**
-//     * get sequences bases from a FASTA file
-//     *
-//     * @param seqName
-//     * @param start
-//     * @param module
-//     * @param end
-//     * @return
-//     */
-//    public String getReferenceBases(String seqName, int start, int end, String module) throws Exception; 
-    
     /**
      * get description of annotation fields from VCF headers
      * @param module
