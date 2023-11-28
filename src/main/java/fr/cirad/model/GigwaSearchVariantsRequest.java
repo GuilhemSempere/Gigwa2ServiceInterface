@@ -17,7 +17,7 @@
 package fr.cirad.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,18 +40,16 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private String geneName = "";
     private String variantEffect = "";
 
-    private Integer numberGroups = 2;
-    
-    private List<String> gtPattern = new ArrayList<>(Collections.nCopies(numberGroups, "Any"));
-    private List<HashMap<String, Float>> annotationFieldThresholds = new ArrayList<>(Collections.nCopies(numberGroups, new HashMap<>()));
-    private List<Float> minMissingData = new ArrayList<>(Collections.nCopies(numberGroups, 0f));
-    private List<Float> maxMissingData = new ArrayList<>(Collections.nCopies(numberGroups, 100f));
-    private List<Float> minHeZ = new ArrayList<>(Collections.nCopies(numberGroups, 0f));
-    private List<Float> maxHeZ = new ArrayList<>(Collections.nCopies(numberGroups, 100f));
-    private List<Float> minMaf = new ArrayList<>(Collections.nCopies(numberGroups, 0f));
-    private List<Float> maxMaf = new ArrayList<>(Collections.nCopies(numberGroups, 50f));
-    private List<Integer> mostSameRatio = new ArrayList<>(Collections.nCopies(numberGroups, 100));
-    
+    private List<String> gtPattern = new ArrayList<>();
+    private List<HashMap<String, Float>> annotationFieldThresholds = new ArrayList<>();
+    private List<Float> minMissingData = new ArrayList<>();
+    private List<Float> maxMissingData = new ArrayList<>();
+    private List<Float> minHeZ = new ArrayList<>();
+    private List<Float> maxHeZ = new ArrayList<>();
+    private List<Float> minMaf = new ArrayList<>();
+    private List<Float> maxMaf = new ArrayList<>();
+    private List<Integer> mostSameRatio = new ArrayList<>();
+
     private List<List<String>> additionalCallSetIds;
     
     private boolean discriminate = false;
@@ -63,6 +61,42 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private boolean applyMatrixSizeLimit = true;
     
     private String selectedVariantIds = "";
+
+	/** The Constant AGGREGATION_QUERY_REGEX_APPLY_TO_ALL_IND_SUFFIX. */
+	static final public String AGGREGATION_QUERY_REGEX_APPLY_TO_ALL_IND_SUFFIX = "_ALL_"; // used to differentiate aggregation query with $and operator 
+
+	/** The Constant AGGREGATION_QUERY_REGEX_APPLY_TO_AT_LEAST_ONE_IND_SUFFIX. */
+	static final public String AGGREGATION_QUERY_REGEX_APPLY_TO_AT_LEAST_ONE_IND_SUFFIX = "_ATLO_";  // used to differentiate find query with $or operator
+
+	/** The Constant AGGREGATION_QUERY_NEGATION_SUFFIX. */
+	static final public String AGGREGATION_QUERY_NEGATION_SUFFIX = "_NEG_";    // used to indicate that the match operator should be negated in the aggregation query
+
+	/** The Constant GENOTYPE_CODE_LABEL_ALL. */
+	static final public String GENOTYPE_CODE_LABEL_ALL = "Any";
+
+	/** The Constant GENOTYPE_CODE_LABEL_NOT_ALL_SAME. */
+	static final public String GENOTYPE_CODE_LABEL_NOT_ALL_SAME = "Not all the same";
+
+	/** The Constant GENOTYPE_CODE_LABEL_MOSTLY_SAME. */
+	static final public String GENOTYPE_CODE_LABEL_MOSTLY_SAME = "All or mostly the same";
+
+	/** The Constant GENOTYPE_CODE_LABEL_ALL_DIFFERENT. */
+	static final public String GENOTYPE_CODE_LABEL_ALL_DIFFERENT = "All different";
+
+	/** The Constant GENOTYPE_CODE_LABEL_NOT_ALL_DIFFERENT. */
+	static final public String GENOTYPE_CODE_LABEL_NOT_ALL_DIFFERENT = "Not all different";
+
+	/** The Constant GENOTYPE_CODE_LABEL_ALL_HOMOZYGOUS_REF. */
+	static final public String GENOTYPE_CODE_LABEL_ALL_HOMOZYGOUS_REF = "All Homozygous Ref";
+
+	/** The Constant GENOTYPE_CODE_LABEL_ATL_ONE_HOMOZYGOUS_REF. */
+	static final public String GENOTYPE_CODE_LABEL_ATL_ONE_HOMOZYGOUS_REF = "Some Homozygous Ref";
+
+	/** The Constant GENOTYPE_CODE_LABEL_ALL_HOMOZYGOUS_VAR. */
+	static final public String GENOTYPE_CODE_LABEL_ALL_HOMOZYGOUS_VAR = "All Homozygous Var";
+
+	/** The Constant GENOTYPE_CODE_LABEL_ATL_ONE_HOMOZYGOUS_VAR. */
+	static final public String GENOTYPE_CODE_LABEL_ATL_ONE_HOMOZYGOUS_VAR = "Some Homozygous Var";
     
     public GigwaSearchVariantsRequest() {
         super.setPageSize(100);
@@ -104,11 +138,12 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public Integer getNumberGroups() {
-        return numberGroups;
+    	return Arrays.asList(gtPattern.size(), annotationFieldThresholds.size(), minMissingData.size(), maxMissingData.size(), minHeZ.size(), maxHeZ.size(), minMaf.size(), maxMaf.size(), mostSameRatio.size())
+                .stream().mapToInt(Integer::intValue).max().orElse(0);
     }
 
-    public void setNumberGroups(Integer numberGroups) {
-        this.numberGroups = numberGroups;
+    public List<List<String>> getAllCallSetIds() {
+        return getNumberGroups() == 0 ? new ArrayList<>() : (additionalCallSetIds == null ? new ArrayList<>() {{ add(0, getCallSetIds()); }} : new ArrayList<>(additionalCallSetIds) {{ add(0, getCallSetIds()); }});
     }
 
     public boolean isGetGT() {
@@ -119,8 +154,13 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.getGT = getGT;
     }
 
-    public List<String> getGtPattern() {
-        return gtPattern;
+    public String getGtPattern(int nIndex) {
+    	try {
+    		return gtPattern.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return GENOTYPE_CODE_LABEL_ALL;
+    	}
     }
 
     public void setGtPattern(List<String> gtPattern) {
@@ -128,11 +168,38 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setGtPatternWithIndex(String gtPattern, Integer index) {
+    	ensureSize(index);
         this.gtPattern.set(index, gtPattern);
     }
 
-    public List<HashMap<String, Float>> getAnnotationFieldThresholds() {
-	return annotationFieldThresholds;
+    private void ensureSize(Integer index) {
+   	
+    	while (gtPattern.size() <= index) {
+			gtPattern.add(GENOTYPE_CODE_LABEL_ALL);
+			annotationFieldThresholds.add(new HashMap<>());
+			minMissingData.add(0f);
+			maxMissingData.add(100f);
+			minHeZ.add(0f);
+			maxHeZ.add(100f);
+			minMaf.add(0f);
+			maxMaf.add(50f);
+			mostSameRatio.add(100);
+			if (gtPattern.size() < index)
+				additionalCallSetIds.add(new ArrayList<>());
+		}
+	}
+    
+	public List<HashMap<String, Float>> getAnnotationFieldThresholds() {
+   		return annotationFieldThresholds;
+    }
+
+	public HashMap<String, Float> getAnnotationFieldThresholds(int nIndex) {
+    	try {
+    		return annotationFieldThresholds.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return new HashMap<>();
+    	}
     }
 
     public void setAnnotationFieldThresholds(List<HashMap<String, Float>> annotationFieldThresholds) {
@@ -140,11 +207,17 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setAnnotationFieldThresholdsWithIndex(HashMap<String, Float> annotationFieldThresholds, Integer index) {
+    	ensureSize(index);
         this.annotationFieldThresholds.set(index, annotationFieldThresholds);
     }
 
-    public List<Float> getMinMissingData() {
-        return minMissingData;
+    public Float getMinMissingData(int nIndex) {
+    	try {
+    		return minMissingData.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return 0f;
+    	}
     }
 
     public void setMinMissingData(List<Float> minMissingData) {
@@ -152,11 +225,17 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setMinMissingDataWithIndex(Float minMissingData, Integer index) {
+    	ensureSize(index);
         this.minMissingData.set(index, minMissingData);
     }
 
-    public List<Float> getMaxMissingData() {
-        return maxMissingData;
+    public Float getMaxMissingData(int nIndex) {
+    	try {
+    		return maxMissingData.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return 100f;
+    	}
     }
 
     public void setMaxMissingData(List<Float> maxMissingData) {
@@ -164,11 +243,17 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setMaxMissingDataWithIndex(Float maxMissingData, Integer index) {
+    	ensureSize(index);
         this.maxMissingData.set(index, maxMissingData);
     }
 
-    public List<Float> getMinHeZ() {
-        return minHeZ;
+    public Float getMinHeZ(int nIndex) {
+    	try {
+    		return minHeZ.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return 0f;
+    	}
     }
 
     public void setMinHeZ(List<Float> minHeZ) {
@@ -176,11 +261,17 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setMinHeZWithIndex(Float minHeZ, Integer index) {
+    	ensureSize(index);
         this.minHeZ.set(index, minHeZ);
     }
 
-    public List<Float> getMaxHeZ() {
-        return maxHeZ;
+    public Float getMaxHeZ(int nIndex) {
+    	try {
+    		return maxHeZ.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return 100f;
+    	}
     }
 
     public void setMaxHeZ(List<Float> maxHeZ) {
@@ -188,11 +279,17 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setMaxHeZWithIndex(Float maxHeZ, Integer index) {
+    	ensureSize(index);
         this.maxHeZ.set(index, maxHeZ);
     }
 
-    public List<Float> getMinMaf() {
-        return minMaf;
+    public Float getMinMaf(int nIndex) {
+    	try {
+    		return minMaf.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return 0f;
+    	}
     }
 
     public void setMinMaf(List<Float> minMaf) {
@@ -200,11 +297,17 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setMinMafWithIndex(Float minMaf, Integer index) {
+    	ensureSize(index);
         this.minMaf.set(index, minMaf);
     }
 
-    public List<Float> getMaxMaf() {
-        return maxMaf;
+    public Float getMaxMaf(int nIndex) {
+    	try {
+    		return maxMaf.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return 50f;
+    	}
     }
 
     public void setMaxMaf(List<Float> maxMaf) {
@@ -212,6 +315,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setMaxMafWithIndex(Float maxMaf, Integer index) {
+    	ensureSize(index);
         this.maxMaf.set(index, maxMaf);
     }
 
@@ -239,8 +343,13 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.variantEffect = variantEffect;
     }
     
-    public List<Integer> getMostSameRatio() {
-        return mostSameRatio;
+    public int getMostSameRatio(int nIndex) {
+    	try {
+    		return mostSameRatio.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return 100;
+    	}
     }
 
     public void setMostSameRatio(List<Integer> mostSameRatio) {
@@ -248,24 +357,21 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public void setMostSameRatioWithIndex(Integer mostSameRatio, Integer index) {
+    	ensureSize(index);
         this.mostSameRatio.set(index, mostSameRatio);
     }
 
-    public List<List<String>> getAdditionalCallSetIds() {
-        return additionalCallSetIds;
+    public List<String> getAdditionalCallSetIds(int nIndex) {
+    	try {
+    		return additionalCallSetIds.get(nIndex);
+    	}
+    	catch (IndexOutOfBoundsException iobe) {
+    		return new ArrayList<>();
+    	}
     }
 
     public void setAdditionalCallSetIds(List<List<String>> additionalCallSetIds) {
         this.additionalCallSetIds = additionalCallSetIds;
-    }
-
-    public List<List<String>> getAllCallSetIds() {
-        return new ArrayList<>(additionalCallSetIds) {{ add(0, getCallSetIds()); }};
-    }
-
-    public void setAdditionalCallSetIdsWithIndex(List<String> additionalCallSetIds, Integer index) {
-        if (index >= 0 && index < this.additionalCallSetIds.size())
-            this.additionalCallSetIds.set(index, additionalCallSetIds);
     }
 
     public boolean isDiscriminate() {
