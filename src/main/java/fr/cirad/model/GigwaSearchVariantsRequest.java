@@ -379,7 +379,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public boolean isDiscriminate(int groupNumber) {
-        return discriminate.get(groupNumber) != null || discriminate.contains(groupNumber);
+        return discriminate.get(groupNumber) != null || discriminate.contains(groupNumber + 1);
     }
 
 	public List<Integer> getDiscriminate() {
