@@ -49,10 +49,9 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private List<Float> minMaf = new ArrayList<>();
     private List<Float> maxMaf = new ArrayList<>();
     private List<Integer> mostSameRatio = new ArrayList<>();
-
-    private List<List<String>> additionalCallSetIds;
+    private List<Integer> discriminate =  new ArrayList<>();
+    private List<List<String>> additionalCallSetIds;    
     
-    private boolean discriminate = false;
     private String sortBy = "";
     private String sortDir = "asc";
 
@@ -166,10 +165,15 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     public void setGtPattern(List<String> gtPattern) {
         this.gtPattern = gtPattern;
     }
-
+    
     public void setGtPatternWithIndex(String gtPattern, Integer index) {
     	ensureSize(index);
         this.gtPattern.set(index, gtPattern);
+    }
+
+    public void setDiscriminateWithIndex(Integer group, Integer index) {
+    	ensureSize(index);
+        this.discriminate.set(index, group);
     }
 
     private void ensureSize(Integer index) {
@@ -374,11 +378,15 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.additionalCallSetIds = additionalCallSetIds;
     }
 
-    public boolean isDiscriminate() {
-        return discriminate;
+    public boolean isDiscriminate(int groupNumber) {
+        return discriminate.get(groupNumber) != null || discriminate.contains(groupNumber + 1);
     }
 
-    public void setDiscriminate(boolean discriminate) {
+	public List<Integer> getDiscriminate() {
+		return discriminate;
+	}
+
+    public void setDiscriminate(List<Integer> discriminate) {
         this.discriminate = discriminate;
     }
 
