@@ -188,6 +188,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
 			minMaf.add(0f);
 			maxMaf.add(50f);
 			mostSameRatio.add(100);
+			discriminate.add(null);
 			if (gtPattern.size() < index)
 				additionalCallSetIds.add(new ArrayList<>());
 		}
