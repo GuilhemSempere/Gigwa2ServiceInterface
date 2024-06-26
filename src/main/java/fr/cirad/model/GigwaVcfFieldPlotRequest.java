@@ -20,7 +20,7 @@ package fr.cirad.model;
  *
  * @author petel, sempere
  */
-public class GigwaVcfFieldPlotRequest extends GigwaIgvRequest {
+public class GigwaVcfFieldPlotRequest extends GigwaDensityRequest {
 
     private String vcfField;
     
