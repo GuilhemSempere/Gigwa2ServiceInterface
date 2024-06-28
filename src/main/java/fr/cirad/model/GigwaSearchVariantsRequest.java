@@ -40,6 +40,7 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     private String geneName = "";
     private String variantEffect = "";
 
+    private List<String> groupName = new ArrayList<>();
     private List<String> gtPattern = new ArrayList<>();
     private List<HashMap<String, Float>> annotationFieldThresholds = new ArrayList<>();
     private List<Float> minMissingData = new ArrayList<>();
@@ -153,7 +154,20 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
         this.getGT = getGT;
     }
 
-    public String getGtPattern(int nIndex) {
+    public String getGroupName(int nIndex) {
+		return groupName.get(nIndex);
+	}
+
+	public void setGroupNameWithIndex(String groupName, Integer index) {
+		ensureSize(index);
+		this.groupName.set(index, groupName);
+	}
+
+	public void setGroupName(List<String> groupName) {
+		this.groupName = groupName;
+	}
+
+	public String getGtPattern(int nIndex) {
     	try {
     		return gtPattern.get(nIndex);
     	}
@@ -177,7 +191,6 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     private void ensureSize(Integer index) {
-   	
     	while (gtPattern.size() <= index) {
 			gtPattern.add(GENOTYPE_CODE_LABEL_ALL);
 			annotationFieldThresholds.add(new HashMap<>());
