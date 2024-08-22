@@ -26,6 +26,8 @@ public class Constants {
     public final static String TOKEN = "token";
     
     public final static String MESSAGE = "msg";
+    
+    public final static String REDIRECTION = "redirect";
 
     public final static String NUMBER_OF_ALLELE = "numberOfAllele";
 
