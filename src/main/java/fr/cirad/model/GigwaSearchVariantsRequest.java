@@ -155,6 +155,8 @@ public class GigwaSearchVariantsRequest extends SearchVariantsRequest {
     }
 
     public String getGroupName(int nIndex) {
+    	if (nIndex == 0 && groupName.isEmpty())
+    		return null;	// no groups created, working with all individuals
 		return groupName.get(nIndex);
 	}
 
