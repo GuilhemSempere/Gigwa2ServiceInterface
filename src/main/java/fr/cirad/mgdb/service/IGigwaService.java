@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -170,14 +171,6 @@ public interface IGigwaService {
      * @param sModule
      */
     public void clearSequenceFilterFile(HttpServletRequest request, String sModule);
-
-    /**
-     * clean old temp data
-     *
-     * @param request
-     * @throws IOException
-     */
-    public void cleanupExpiredExportData(HttpServletRequest request) throws IOException;
 
     /**
      * abort a process with a specific ID
