@@ -184,8 +184,9 @@ public interface IGigwaService {
      *
      * @param sModule
      * @param processID
+     * @throws InterruptedException 
      */
-    public void dropTempColl(String sModule, String processID);
+    public void dropTempColl(String sModule, String processID) throws InterruptedException;
 
     /**
      * get the distinct sequences in selection
@@ -196,8 +197,9 @@ public interface IGigwaService {
      * @param processID
      * @return
      * @throws FileNotFoundException
+     * @throws InterruptedException 
      */
-    public Collection<String> distinctSequencesInSelection(HttpServletRequest request, String sModule, int projId, String processID) throws FileNotFoundException;
+    public Collection<String> distinctSequencesInSelection(HttpServletRequest request, String sModule, int projId, String processID) throws FileNotFoundException, InterruptedException;
 
     /**
      * get the sequence filter key
