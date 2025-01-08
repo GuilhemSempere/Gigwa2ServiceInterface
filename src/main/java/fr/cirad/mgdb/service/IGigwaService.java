@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.cirad.model.GigwaSearchVariantsExportRequest;
-import fr.cirad.model.GigwaSearchVariantsRequest;
+import fr.cirad.model.MgdbSearchVariantsRequest;
 
 /**
  * Interface defining gigwa-specific methods (i.e. excluding GA4GH methods)
@@ -131,9 +131,9 @@ public interface IGigwaService {
         return "total: " + totalMem + ", free: " + freeMem + ", max: " + maxMem;
     }
 
-    public long countVariants(GigwaSearchVariantsRequest gsvr, boolean fEmptyTempVarColl) throws Exception;
+    public long countVariants(MgdbSearchVariantsRequest gsvr, boolean fEmptyTempVarColl) throws Exception;
 
-    public long findVariants(GigwaSearchVariantsRequest gsvr) throws Exception;
+    public long findVariants(MgdbSearchVariantsRequest gsvr) throws Exception;
     
     /**
      * export the list of variants in a .zip file
@@ -144,33 +144,34 @@ public interface IGigwaService {
      * @throws Exception 
      */
     public void exportVariants(GigwaSearchVariantsExportRequest gsvr, String token, HttpServletResponse response) throws Exception;
-    /**
-     * get the sequence filter count
-     *
-     * @param request
-     * @param sModule
-     * @return
-     * @throws IOException
-     */
-    public int getSequenceFilterCount(HttpServletRequest request, String sModule) throws IOException;
 
-    /**
-     * get sequence by id filtered with following parameters
-     *
-     * @param session
-     * @param sModule
-     * @return
-     * @throws FileNotFoundException
-     */
-    public ArrayList<String> getSequenceIDsBeingFilteredOn(HttpSession session, String sModule) throws FileNotFoundException;
-
-    /**
-     * clear the sequencefilter file
-     *
-     * @param request
-     * @param sModule
-     */
-    public void clearSequenceFilterFile(HttpServletRequest request, String sModule);
+//    /**
+//     * get the sequence filter count
+//     *
+//     * @param request
+//     * @param sModule
+//     * @return
+//     * @throws IOException
+//     */
+//    public int getSequenceFilterCount(HttpServletRequest request, String sModule) throws IOException;
+//
+//    /**
+//     * get sequence by id filtered with following parameters
+//     *
+//     * @param session
+//     * @param sModule
+//     * @return
+//     * @throws FileNotFoundException
+//     */
+//    public ArrayList<String> getSequenceIDsBeingFilteredOn(HttpSession session, String sModule) throws FileNotFoundException;
+//
+//    /**
+//     * clear the sequencefilter file
+//     *
+//     * @param request
+//     * @param sModule
+//     */
+//    public void clearSequenceFilterFile(HttpServletRequest request, String sModule);
 
     /**
      * abort a process with a specific ID
@@ -209,9 +210,9 @@ public interface IGigwaService {
      * @return
      * @throws IOException
      */
-    public String getSequenceFilterQueryKey(HttpServletRequest request, String sModule) throws IOException;
+//    public String getSequenceFilterQueryKey(HttpServletRequest request, String sModule) throws IOException;
 
-    public String getQueryKey(GigwaSearchVariantsRequest gsvr) throws IOException;
+    public String getQueryKey(MgdbSearchVariantsRequest gsvr) throws IOException;
 
     /**
      * get description of annotation fields from VCF headers
