@@ -26,6 +26,8 @@ public class Constants {
     public final static String TOKEN = "token";
     
     public final static String MESSAGE = "msg";
+    
+    public final static String REDIRECTION = "redirect";
 
     public final static String NUMBER_OF_ALLELE = "numberOfAllele";
 
@@ -35,7 +37,7 @@ public class Constants {
 
     public final static String SUCCESS = "success";
 
-    public final static String SEQUENCE_FILTER_COUNT = "sequencesFilterCount";
+//    public final static String SEQUENCE_FILTER_COUNT = "sequencesFilterCount";
 
     public final static String PROCESS_ABORTED = "processAborted";
 
@@ -56,6 +58,4 @@ public class Constants {
     public static final String ACCESS = "access";
 
     public static final String ANN_HEADERS = "annotationHeaders";
-    
-    static final public String MESSAGE_TEMP_RECORDS_NOT_FOUND = "Unable to find temporary records: please SEARCH again!";
 }

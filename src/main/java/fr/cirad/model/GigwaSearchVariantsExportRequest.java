@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
  *
  * @author sempere
  */
-public class GigwaSearchVariantsExportRequest extends GigwaSearchVariantsRequest {
+public class GigwaSearchVariantsExportRequest extends MgdbSearchVariantsRequest {
 
     private String exportFormat;
     private boolean keepExportOnServer;
