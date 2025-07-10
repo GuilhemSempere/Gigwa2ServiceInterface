@@ -30,7 +30,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.avro.AvroRemoteException;
+import org.ga4gh.methods.SearchVariantsRequest;
+
 import fr.cirad.model.GigwaSearchVariantsExportRequest;
+import fr.cirad.model.GigwaSearchVariantsResponse;
 import fr.cirad.model.MgdbSearchVariantsRequest;
 
 /**
@@ -131,19 +135,20 @@ public interface IGigwaService {
         return "total: " + totalMem + ", free: " + freeMem + ", max: " + maxMem;
     }
 
-    public long countVariants(MgdbSearchVariantsRequest gsvr, boolean fEmptyTempVarColl) throws Exception;
+    public long countVariants(MgdbSearchVariantsRequest gsvr, boolean workWithSamples, boolean fEmptyTempVarColl) throws Exception;
 
-    public long findVariants(MgdbSearchVariantsRequest gsvr) throws Exception;
+    public long findVariants(MgdbSearchVariantsRequest gsvr, boolean workWithSamples) throws Exception;
     
     /**
      * export the list of variants in a .zip file
      *
      * @param gsvr
+     * @param workWithSamples
      * @param token
      * @param response
      * @throws Exception 
      */
-    public void exportVariants(GigwaSearchVariantsExportRequest gsvr, String token, HttpServletResponse response) throws Exception;
+    public void exportVariants(GigwaSearchVariantsExportRequest gsvr, boolean workWithSamples, String token, HttpServletResponse response) throws Exception;
 
 //    /**
 //     * get the sequence filter count
@@ -229,4 +234,6 @@ public interface IGigwaService {
     public TreeMap<String, HashMap<String, String>> getExportFormats();
 
 	public TreeSet<String> searchableAnnotationFields(String sModule, int projId);
+
+	GigwaSearchVariantsResponse searchVariants(SearchVariantsRequest svr, boolean workWithSamples) throws AvroRemoteException;
 }
