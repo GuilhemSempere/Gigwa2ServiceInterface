@@ -18,7 +18,6 @@ package fr.cirad.mgdb.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +27,6 @@ import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import fr.cirad.model.GigwaSearchVariantsExportRequest;
 import fr.cirad.model.MgdbSearchVariantsRequest;
@@ -44,10 +42,10 @@ public interface IGigwaService {
      * sort a list of variant Tpes
      *
      * @param sModule
-     * @param projId
+     * @param projIDs
      * @return sorted List<String> containing htsjdk.variant.variantcontext.Type
      */
-    public List<String> listVariantTypesSorted(String sModule, int projId);
+    public List<String> listVariantTypesSorted(String sModule, Integer[] projIDs);
 
     /**
      * get the list of available module on the server
@@ -60,28 +58,28 @@ public interface IGigwaService {
      * get the ploidy level of a genotypeProject
      *
      * @param sModule
-     * @param projId
+     * @param projIDs
      * @return int ploidy level
      */
-    public int getProjectPloidyLevel(String sModule, int projId);
+    public int getProjectPloidyLevel(String sModule, Integer[] projIDs);
 
     /**
      * Get the project effect annotations
      *
      * @param sModule
-     * @param projId
+     * @param projIDs
      * @return TreeSet<String> containing annotations effects
      */
-    public TreeSet<String> getProjectEffectAnnotations(String sModule, int projId);
+    public TreeSet<String> getProjectEffectAnnotations(String sModule, Integer[] projIDs);
 
     /**
      * get distinct allele counts
      *
      * @param sModule
-     * @param projId
+     * @param projIDs
      * @return TresSet<Integer> containing distinct alleles count
      */
-	public Collection<Integer> getDistinctAlleleCounts(String sModule, Integer projId);
+	public Collection<Integer> getDistinctAlleleCounts(String sModule, Integer[] projIDs);
 
     /**
      * get a Map with available project for a module
@@ -113,11 +111,11 @@ public interface IGigwaService {
      *
      * @param request
      * @param sModule
-     * @param projId
+     * @param projIDs
      * @return List<String> containing sequences name
      * @throws FileNotFoundException
      */
-    public List<String> listSequences(HttpServletRequest request, String sModule, int projId) throws FileNotFoundException;
+    public List<String> listSequences(HttpServletRequest request, String sModule, Integer[] projIDs) throws FileNotFoundException;
 
     /**
      * Memory usage
@@ -194,13 +192,13 @@ public interface IGigwaService {
      *
      * @param request
      * @param sModule
-     * @param projId
+     * @param projIDs
      * @param processID
      * @return
      * @throws FileNotFoundException
      * @throws InterruptedException 
      */
-    public Collection<String> distinctSequencesInSelection(HttpServletRequest request, String sModule, int projId, String processID) throws FileNotFoundException, InterruptedException;
+    public Collection<String> distinctSequencesInSelection(HttpServletRequest request, String sModule, Integer[] projIDs, String processID) throws FileNotFoundException, InterruptedException;
 
     /**
      * get the sequence filter key
@@ -210,17 +208,17 @@ public interface IGigwaService {
      * @return
      * @throws IOException
      */
-//    public String getSequenceFilterQueryKey(HttpServletRequest request, String sModule) throws IOException;
+//    public String getSequenceFilterQueryKey(HttpServletRequest request, String sModule) throws Exception;
 
-    public String getQueryKey(MgdbSearchVariantsRequest gsvr) throws IOException;
+    public String getQueryKey(MgdbSearchVariantsRequest gsvr) throws Exception;
 
     /**
      * get description of annotation fields from VCF headers
      * @param module
-     * @param projId
+     * @param projIDs
      * @return 
      */
-    public Map<String, String> getAnnotationHeaders(String module, int projId);
+    public Map<String, String> getAnnotationHeaders(String module, Integer[] projIDs);
     
     /**
      * get available export formats and descriptions
@@ -228,5 +226,5 @@ public interface IGigwaService {
      */
     public TreeMap<String, HashMap<String, String>> getExportFormats();
 
-	public TreeSet<String> searchableAnnotationFields(String sModule, int projId);
+	public TreeSet<String> searchableAnnotationFields(String sModule, Integer[] projIDs);
 }
