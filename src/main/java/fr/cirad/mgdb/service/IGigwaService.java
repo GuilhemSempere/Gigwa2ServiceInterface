@@ -55,13 +55,13 @@ public interface IGigwaService {
     public Collection<String> listModules();
 
     /**
-     * get the ploidy level of a genotypeProject
+     * get the distinct ploidy levels encountered in specified projects
      *
      * @param sModule
      * @param projIDs
      * @return int ploidy level
      */
-    public int getProjectPloidyLevel(String sModule, Integer[] projIDs);
+    public List<Integer> getProjectPloidyLevel(String sModule, Integer[] projIDs);
 
     /**
      * Get the project effect annotations
