@@ -47,6 +47,8 @@ public class Constants {
 
     public static final String HOSTS = "host";
     
+    public static final String PLOIDY = "ploidy";
+
     public static final String GENOTYPING_TECHNOLOGY = "genotyping technology";
 
     public static final String ANN_HEADER = "ann_header";
