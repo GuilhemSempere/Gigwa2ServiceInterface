@@ -25,7 +25,7 @@ import org.ga4gh.methods.SearchReferencesRequest;
  */
 public class GigwaSearchReferencesRequest extends SearchReferencesRequest {
 
-    private String variantSetId = "-1";
+    private String variantSetId = null;
 
     public String getVariantSetId() {
         return variantSetId;
