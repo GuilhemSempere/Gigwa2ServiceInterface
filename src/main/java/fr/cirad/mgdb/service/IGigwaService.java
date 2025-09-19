@@ -217,7 +217,7 @@ public interface IGigwaService {
      */
 //    public String getSequenceFilterQueryKey(HttpServletRequest request, String sModule) throws IOException;
 
-    public String getQueryKey(MgdbSearchVariantsRequest gsvr) throws IOException;
+    public String getQueryKey(MgdbSearchVariantsRequest gsvr, boolean workWithSamples) throws IOException;
 
     /**
      * get description of annotation fields from VCF headers
