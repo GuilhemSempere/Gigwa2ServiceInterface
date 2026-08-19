@@ -25,8 +25,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import fr.cirad.model.GigwaSearchVariantsExportRequest;
 import fr.cirad.model.MgdbSearchVariantsRequest;
