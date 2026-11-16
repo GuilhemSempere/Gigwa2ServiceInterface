@@ -72,8 +72,29 @@
                     <groupId>org.mortbay.jetty</groupId>
                     <artifactId>servlet-api</artifactId>
                 </exclusion>
+                <!-- avro-ipc is unused and drags in Jetty 6, Netty 3, Velocity 1.7 -->
+                <exclusion>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro-ipc</artifactId>
+                </exclusion>
+                <!-- Avro 1.7.7 is affected by CVE-2024-47561: replaced by the explicit dependency below -->
+                <exclusion>
+                    <groupId>org.apache.avro</groupId>
+                    <artifactId>avro</artifactId>
+                </exclusion>
             </exclusions>
-        </dependency> 
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.11.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-compress</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
